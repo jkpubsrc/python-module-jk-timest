@@ -20,7 +20,7 @@ setup(name='jk_timest',
 	],
 	include_package_data=True,
 	classifiers=[
-		'Development Status :: 5 - Production Stable',
+		'Development Status :: 5 - Production/Stable',
 		'Programming Language :: Python :: 3.5',
 		'License :: OSI Approved :: Apache Software License', 
 	],

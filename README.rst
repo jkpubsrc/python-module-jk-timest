@@ -58,7 +58,7 @@ The method `getETAStr()` provides the following arguments:
 This method supports the following estimation output styles:
 
 * `EnumTimeEstimationOutputStyle.EASY` : Print either something like "X days Y hours" or something like "HH:MM:SS"
-   indicating hours, minutes and seconds. (This is the default.)
+  indicating hours, minutes and seconds. (This is the default.)
 * `EnumTimeEstimationOutputStyle.FORMAL` : Print the remaining time in a strict format: "DD:HH:MM:SS"
 
 Smoothing will result in averaging over the last 20 estimation values calculated. This is a very simple

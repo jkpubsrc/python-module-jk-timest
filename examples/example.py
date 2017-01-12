@@ -23,7 +23,7 @@ for i in range(PROCESS_DURATION_STEPS):
 	# now do something; we simulate this by just sleeping for about a second
 	time.sleep(1 + random.random() * 0.4 - 0.2)
 
-	# inform estimation object that we did something
+	# inform the estimation object that we did something
 	te.tick()
 
 	# estimate remaining time and print it

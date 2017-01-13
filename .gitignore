@@ -1,4 +1,6 @@
-dist/
-jk_timest.egg-info/
-__pycache__/
-
+src/dist/
+src/jk_timest.egg-info/
+src/__pycache__/
+src/jk_timest/__pycache__/
+examples/__pycache__/
+.svn/

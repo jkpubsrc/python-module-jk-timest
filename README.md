@@ -6,7 +6,13 @@ Introduction
 
 This python module aids in estimating the remaining time of a (long running) process. For that purpose
 it provides the following class:
+
 * TimeEstimation
+
+Information about this module can be found here:
+
+* [github.org](https://github.com/jkpubsrc/python-module-jk-timest)
+* [pypi.python.org](https://pypi.python.org/pypi?name=jk_timest)
 
 How to Use the Time Estimation Class
 ------------------------------------
@@ -77,7 +83,9 @@ for comments, collaboration requests, suggestions for improvement or reporting b
 License
 -------
 
-Apache Software License 2.0
+This software is provided under the following license:
+
+* Apache Software License 2.0
 
 
 

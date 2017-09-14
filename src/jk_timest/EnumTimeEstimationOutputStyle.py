@@ -16,7 +16,7 @@ from enum import Enum
 class EnumTimeEstimationOutputStyle(Enum):
 	FORMAL = 1
 	EASY = 2
-
+	NO_DAYS = 3
 
 
 

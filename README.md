@@ -12,7 +12,7 @@ it provides the following class:
 Information about this module can be found here:
 
 * [github.org](https://github.com/jkpubsrc/python-module-jk-timest)
-* [pypi.python.org](https://pypi.python.org/pypi?name=jk_timest)
+* [pypi.python.org](https://pypi.python.org/pypi/jk_timest)
 
 How to Use the Time Estimation Class
 ------------------------------------

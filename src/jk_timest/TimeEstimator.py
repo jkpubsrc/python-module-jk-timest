@@ -41,9 +41,25 @@ class TimeEstimator(object):
 		self.__max = expectedMaximum
 		self.__pos = currentPosition
 		self.__buffer = []
+		self.__buffer2 = []
 		self.__minDataSeconds = minDataSeconds
 		self.__minDataValues = minDataValues
 		self.__smoothBuffer = []
+	#
+
+
+
+	@property
+	def expectedMaximum(self):
+		return self.__max
+	#
+
+
+
+	@property
+	def currentPosition(self):
+		return self.__pos
+	#
 
 
 
@@ -51,9 +67,10 @@ class TimeEstimator(object):
 	# Perform a "tick": Call this method whenever a progressing step happened. This will indicate some progress on whatever
 	# process this object models.
 	#
-	def tick(self):
+	def tick(self, increment = 1):
+		self.__pos += increment
 		self.__buffer.append(currentTimeMillis())
-		self.__pos += 1
+		self.__buffer2.append(self.__pos)
 
 		if len(self.__buffer) < self.__minDataValues * 100:
 			return
@@ -61,6 +78,8 @@ class TimeEstimator(object):
 		if dtime < self.__minDataSeconds * 100:
 			return
 		del self.__buffer[0]
+		del self.__buffer2[0]
+	#
 
 
 
@@ -77,7 +96,10 @@ class TimeEstimator(object):
 		if dtime < self.__minDataSeconds:
 			# too early
 			return None
-		return (len(self.__buffer) - 1) / dtime
+		dticks = self.__buffer2[len(self.__buffer2) - 1] - self.__buffer2[0]
+		return dticks / dtime
+		# return (len(self.__buffer) - 1) / dtime
+	#
 
 
 
@@ -90,6 +112,7 @@ class TimeEstimator(object):
 				return str(speed)
 			else:
 				return str(int(speed))
+	#
 
 
 
@@ -108,7 +131,8 @@ class TimeEstimator(object):
 		eticksLeft = self.__max - self.__pos
 		if eticksLeft == 0:
 			return 0
-		dticks = len(self.__buffer) - 1
+		#dticks = len(self.__buffer) - 1
+		dticks = self.__buffer2[len(self.__buffer2) - 1] - self.__buffer2[0]
 		avgStepDuration = dtime / dticks
 		etime = eticksLeft * avgStepDuration
 
@@ -123,6 +147,7 @@ class TimeEstimator(object):
 			return mysum / len(self.__smoothBuffer) - len(self.__smoothBuffer) * avgStepDuration / 2 + avgStepDuration
 		else:
 			return etime
+	#
 
 
 
@@ -149,7 +174,13 @@ class TimeEstimator(object):
 		hoursLeft = hoursLeft - (daysLeft * 24)
 		secondsLeft = int(secondsLeft)
 
-		if mode == EnumTimeEstimationOutputStyle.FORMAL:
+		if mode == EnumTimeEstimationOutputStyle.NO_DAYS:
+			if daysLeft > 0:
+				return "99:99:99"
+			else:
+				return self.__toStrWithZero(hoursLeft) + ":" \
+					+ self.__toStrWithZero(minutesLeft) + ":" + self.__toStrWithZero(secondsLeft)
+		elif mode == EnumTimeEstimationOutputStyle.FORMAL:
 			return self.__toStrWithZero(daysLeft) + ":" + self.__toStrWithZero(hoursLeft) + ":" \
 				+ self.__toStrWithZero(minutesLeft) + ":" + self.__toStrWithZero(secondsLeft)
 		elif mode == EnumTimeEstimationOutputStyle.EASY:
@@ -157,6 +188,7 @@ class TimeEstimator(object):
 				return self.__toStrWithZero(hoursLeft) + ":" +  self.__toStrWithZero(minutesLeft) + ":" + self.__toStrWithZero(secondsLeft)
 			else:
 				return str(daysLeft) + " days " + hoursLeft + " hours"
+	#
 
 
 
@@ -165,7 +197,11 @@ class TimeEstimator(object):
 			return "0" + str(s)
 		else:
 			return str(s)
+	#
 
+
+
+#
 
 
 

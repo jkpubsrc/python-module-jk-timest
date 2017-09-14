@@ -1,10 +1,15 @@
 jk_timest
 =========
 
+Introduction
+------------
+
+This python module aids in estimating the remaining time of a (long running) process.
+
 Information about this module can be found here:
 
 * [github.org](https://github.com/jkpubsrc/python-module-jk-timest)
-* [pypi.python.org](https://pypi.python.org/pypi?name=jk_timest)
+* [pypi.python.org](https://pypi.python.org/pypi/jk_timest)
 
 Contact Information
 -------------------
